@@ -252,6 +252,14 @@
             padding: 15px;
         }
 
+        .laptop-mockup-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
         .phone-mockup {
             position: absolute;
             width: 180px;
@@ -272,6 +280,20 @@
             border-radius: 20px;
             position: relative;
             padding: 15px;
+        }
+
+        /* Image-based hero mobile mockup */
+        .hero-mockup-img {
+            position: absolute;
+            width: 220px;
+            max-width: 42%;
+            height: auto;
+            bottom: 0;
+            right: 30px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            z-index: 3;
+            object-fit: cover;
         }
 
         /* Section Titles */
@@ -662,6 +684,78 @@
                 opacity: 0;
             }
         }
+
+        /* Early Access modal (glass) */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(2px);
+        }
+
+        .glass-panel {
+            position: relative;
+            width: 420px;
+            max-width: calc(100% - 40px);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px) saturate(1.1);
+            color: var(--light-gray);
+        }
+
+        .glass-panel h3 {
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .glass-panel label {
+            display: block;
+            font-size: 0.95rem;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .glass-panel input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(0,0,0,0.4);
+            color: #fff;
+            margin-top: 6px;
+            box-sizing: border-box;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            background: transparent;
+            border: none;
+            color: #bbb;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 480px) {
+            .glass-panel { width: calc(100% - 32px); padding: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -679,7 +773,7 @@
                 <a href="#trust" class="nav-link">Trust & Ethics</a>
                 <a href="#about" class="nav-link">About</a>
             </div>
-            <a href="#install" class="btn btn-secondary nav-cta ripple">Get Early Access</a>
+            <a href="#" class="btn btn-secondary nav-cta ripple open-early-access">Get Early Access</a>
         </div>
     </nav>
 
@@ -691,29 +785,19 @@
                 <p>Your guardian against scams, phishing, SMS bombing, deepfake impersonation, and digital fraud.</p>
                 <div class="hero-buttons">
                     <a href="#install" class="btn btn-primary ripple">Install App</a>
-                    <a href="#install" class="btn btn-secondary ripple">Get Early Access</a>
+                    <a href="#" class="btn btn-secondary ripple open-early-access">Get Early Access</a>
                 </div>
                 <p class="disclaimer">Currently in simulation mode. Real-world protection roadmap in progress.</p>
             </div>
             <div class="hero-visual">
                 <div class="laptop-mockup">
                     <div class="laptop-screen">
-                        <!-- Laptop screen content simulation -->
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); border-radius: 4px;"></div>
+                        <!-- Laptop mockup replaced by attached wide web mockup image -->
+                        <img src="web-mockup.png" alt="Kavach web mockup" class="laptop-mockup-img">
                     </div>
                 </div>
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <!-- Phone screen content simulation -->
-                        <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #151515 0%, #222 100%); border-radius: 16px; padding: 15px;">
-                            <div style="height: 30px; background: #333; border-radius: 4px; margin-bottom: 15px;"></div>
-                            <div style="height: 20px; background: #2d5a4d; border-radius: 4px; margin-bottom: 10px; width: 60%;"></div>
-                            <div style="height: 10px; background: #444; border-radius: 2px; margin-bottom: 15px; width: 80%;"></div>
-                            <div style="height: 60px; background: #222; border-radius: 6px; margin-bottom: 10px;"></div>
-                            <div style="height: 60px; background: #222; border-radius: 6px; margin-bottom: 10px;"></div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Replace the phone mockup with the provided mobile image. Save the attachment as mobile-mockup.png -->
+                <img src="mobile-mockup.png" alt="Kavach mobile mockup" class="hero-mockup-img">
             </div>
         </div>
     </section>
@@ -910,9 +994,9 @@
         <div class="container">
             <h2 class="section-title">Get Kavach Guard</h2>
             <div class="install-buttons">
-                <a href="#" class="btn btn-primary ripple">Android: Download APK</a>
+                <a href="#" class="btn btn-primary ripple open-download">Android: Download APK</a>
                 <a href="#" class="btn btn-secondary ripple">Play Store: Coming Soon</a>
-                <a href="#" class="btn btn-secondary ripple">Early Access Form</a>
+                <a href="#" class="btn btn-secondary ripple open-early-access">Early Access Form</a>
             </div>
             <p class="install-note">Android 8.0+ · No background monitoring · User-controlled</p>
         </div>
@@ -939,6 +1023,44 @@
             <p class="copyright">© 2023 Kavach Guard. All rights reserved.<br>Kavach Guard is a prototype platform for awareness and research.</p>
         </div>
     </footer>
+
+    <!-- Early Access Modal -->
+    <div id="earlyAccessModal" class="modal" aria-hidden="true">
+        <div class="modal-overlay" data-close="true"></div>
+        <div class="glass-panel" role="dialog" aria-modal="true" aria-labelledby="eaTitle">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h3 id="eaTitle">Get Early Access</h3>
+            <form id="earlyAccessForm">
+                <label>Name
+                    <input type="text" name="name" required placeholder="Full name">
+                </label>
+                <label>Mobile No
+                    <input type="tel" name="mobile" pattern="[0-9+\- ]{7,}" required placeholder="e.g. +9199XXXXXXXX">
+                </label>
+                <label>Email
+                    <input type="email" name="email" required placeholder="you@domain.com">
+                </label>
+                <div style="display:flex;gap:10px;margin-top:16px;">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-close="true">Cancel</button>
+                </div>
+            </form>
+            <div id="eaSuccess" style="display:none;margin-top:12px;color:var(--muted-green);">Thanks — we'll be in touch.</div>
+        </div>
+    </div>
+
+        <!-- Download APK Modal -->
+        <div id="downloadModal" class="modal" aria-hidden="true">
+            <div class="modal-overlay" data-close="true"></div>
+            <div class="glass-panel" role="dialog" aria-modal="true" aria-labelledby="dlTitle">
+                <button class="modal-close" aria-label="Close">&times;</button>
+                <h3 id="dlTitle">Android APK</h3>
+                <p style="margin-top:6px;color:#ccc;">Coming soon — thank you for your interest!</p>
+                <div style="margin-top:18px;display:flex;gap:10px;justify-content:flex-end;">
+                    <button type="button" class="btn btn-secondary" data-close="true">Close</button>
+                </div>
+            </div>
+        </div>
 
     <script>
         // Navbar scroll effect
@@ -1016,6 +1138,108 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Early Access modal logic
+        (function(){
+            const modal = document.getElementById('earlyAccessModal');
+            const form = document.getElementById('earlyAccessForm');
+            const success = document.getElementById('eaSuccess');
+
+            function showModal() {
+                modal.classList.add('show');
+                modal.setAttribute('aria-hidden', 'false');
+                // focus first input
+                const first = modal.querySelector('input');
+                if (first) first.focus();
+            }
+
+            function closeModal() {
+                modal.classList.remove('show');
+                modal.setAttribute('aria-hidden', 'true');
+                success.style.display = 'none';
+                form.style.display = '';
+                form.reset();
+            }
+
+            document.querySelectorAll('.open-early-access').forEach(el => {
+                el.addEventListener('click', function(e){
+                    e.preventDefault();
+                    showModal();
+                });
+            });
+
+            // Close handlers (overlay, cancel, close button)
+            modal.addEventListener('click', function(e){
+                if (e.target && (e.target.dataset && e.target.dataset.close === 'true')) {
+                    closeModal();
+                }
+            });
+
+            const closeButtons = modal.querySelectorAll('[data-close], .modal-close');
+            closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+
+            // Escape key
+            document.addEventListener('keydown', function(e){
+                if (e.key === 'Escape' && modal.classList.contains('show')) closeModal();
+            });
+
+            // Form submission (basic validation + simulate submit)
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                const formData = new FormData(form);
+                const name = formData.get('name').trim();
+                const mobile = formData.get('mobile').trim();
+                const email = formData.get('email').trim();
+
+                if (!name || !mobile || !email) {
+                    alert('Please fill all fields.');
+                    return;
+                }
+
+                // Simulate success
+                form.style.display = 'none';
+                success.style.display = '';
+
+                // Here you could send data to your backend.
+                console.log('Early access signup:', { name, mobile, email });
+
+                setTimeout(() => closeModal(), 1600);
+            });
+
+            // APK Download modal (simple message)
+            const downloadModal = document.getElementById('downloadModal');
+            function showDownload() {
+                downloadModal.classList.add('show');
+                downloadModal.setAttribute('aria-hidden', 'false');
+            }
+            function closeDownload() {
+                downloadModal.classList.remove('show');
+                downloadModal.setAttribute('aria-hidden', 'true');
+            }
+
+            document.querySelectorAll('.open-download').forEach(el => {
+                el.addEventListener('click', function(e){
+                    e.preventDefault();
+                    showDownload();
+                });
+            });
+
+            // Close handlers for download modal
+            downloadModal.addEventListener('click', function(e){
+                if (e.target && (e.target.dataset && e.target.dataset.close === 'true')) {
+                    closeDownload();
+                }
+            });
+            downloadModal.querySelectorAll('[data-close], .modal-close').forEach(btn => btn.addEventListener('click', closeDownload));
+
+            document.addEventListener('keydown', function(e){
+                if (e.key === 'Escape') {
+                    if (modal.classList.contains('show')) closeModal();
+                    if (downloadModal.classList.contains('show')) closeDownload();
+                }
+            });
+
+        })();
     </script>
 </body>
 </html>
